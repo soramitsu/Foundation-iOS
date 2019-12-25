@@ -8,23 +8,12 @@ import SoraFoundation
 import SoraKeystore
 
 class LocalizationTests: XCTestCase {
-    private struct Constants {
-        static let russian = "ru"
-        static let english = "en"
-        static let spanish = "es"
-        static let settingsKey = "language"
-        static let russiaRegion = "RU"
-        static let usRegion = "US"
-        static let spainRegion = "ES"
-        static let defaultTimeout: TimeInterval = 10.0
-    }
-
     func testObserverIsNotifiedWhenLocalizationChanges() {
         // given
 
-        let localizationManager = LocalizationManager(localization: Constants.russian)!
+        let localizationManager = LocalizationManager(localization: LocalizationConstants.russian)!
 
-        XCTAssertEqual(localizationManager.selectedLocalization, Constants.russian)
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.russian)
 
         // when
 
@@ -34,19 +23,19 @@ class LocalizationTests: XCTestCase {
             changeExpectation.fulfill()
         }
 
-        localizationManager.selectedLocalization = Constants.english
+        localizationManager.selectedLocalization = LocalizationConstants.english
 
         // then
 
-        wait(for: [changeExpectation], timeout: Constants.defaultTimeout)
+        wait(for: [changeExpectation], timeout: LocalizationConstants.defaultTimeout)
 
-        XCTAssertEqual(localizationManager.selectedLocalization, Constants.english)
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.english)
     }
 
     func testObserverCanBeAddAndRemoved() {
         // given
 
-        let localizationManager = LocalizationManager(localization: Constants.russian)!
+        let localizationManager = LocalizationManager(localization: LocalizationConstants.russian)!
 
         // when
 
@@ -71,37 +60,38 @@ class LocalizationTests: XCTestCase {
 
         let settings = InMemorySettingsManager()
 
-        let localizationManager = LocalizationManager(settings: settings, key: Constants.settingsKey)
+        let localizationManager = LocalizationManager(settings: settings, key: LocalizationConstants.settingsKey)
 
         XCTAssertEqual(localizationManager.selectedLocalization,
-                       settings.string(for: Constants.settingsKey))
+                       settings.string(for: LocalizationConstants.settingsKey))
 
         // when
 
-        localizationManager.selectedLocalization = Constants.russian
+        localizationManager.selectedLocalization = LocalizationConstants.russian
 
         // then
 
-        XCTAssertEqual(localizationManager.selectedLocalization, Constants.russian)
-        XCTAssertEqual(settings.string(for: Constants.settingsKey), Constants.russian)
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.russian)
+        XCTAssertEqual(settings.string(for: LocalizationConstants.settingsKey), LocalizationConstants.russian)
     }
 
     func testLocalizationFetchedFromSettings() {
         // given
 
         let settings = InMemorySettingsManager()
-        settings.set(value: Constants.spanish, for: Constants.settingsKey)
+        settings.set(value: LocalizationConstants.spanish, for: LocalizationConstants.settingsKey)
 
         // when
 
         let localizationManager = LocalizationManager(settings: settings,
-                                                      key: Constants.settingsKey,
-                                                      preferredLanguages: [Constants.russian],
-                                                      availableLocalizations: [Constants.russian])
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian],
+                                                      availableLocalizations: [LocalizationConstants.russian])
 
         // then
 
-        XCTAssertEqual(localizationManager.selectedLocalization, settings.string(for: Constants.settingsKey))
+        XCTAssertEqual(localizationManager.selectedLocalization,
+                       settings.string(for: LocalizationConstants.settingsKey))
     }
 
     func testDefaultLanguageIsUsedIfLocaleMatchingFailed() {
@@ -112,14 +102,14 @@ class LocalizationTests: XCTestCase {
         // when
 
         let localizationManager = LocalizationManager(settings: settings,
-                                                      key: Constants.settingsKey,
-                                                      preferredLanguages: [Constants.russian],
-                                                      availableLocalizations: [Constants.english],
-                                                      defaultLocalization: Constants.spanish)
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian],
+                                                      availableLocalizations: [LocalizationConstants.english],
+                                                      defaultLocalization: LocalizationConstants.spanish)
 
         // then
 
-        XCTAssertEqual(localizationManager.selectedLocalization, Constants.spanish)
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.spanish)
     }
 
     func testAvailableLocalizationIsFullyMatchesPreferred() {
@@ -128,8 +118,8 @@ class LocalizationTests: XCTestCase {
         let settings = InMemorySettingsManager()
 
         let spanishUsComponents = [
-            NSLocale.Key.languageCode.rawValue: Constants.spanish,
-            NSLocale.Key.countryCode.rawValue: Constants.usRegion
+            NSLocale.Key.languageCode.rawValue: LocalizationConstants.spanish,
+            NSLocale.Key.countryCode.rawValue: LocalizationConstants.usRegion
         ]
 
         let spanishUs = Locale.identifier(fromComponents: spanishUsComponents)
@@ -137,10 +127,10 @@ class LocalizationTests: XCTestCase {
         // when
 
         let localizationManager = LocalizationManager(settings: settings,
-                                                      key: Constants.settingsKey,
-                                                      preferredLanguages: [Constants.russian, spanishUs, Constants.spanish],
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian, spanishUs, LocalizationConstants.spanish],
                                                       availableLocalizations: [spanishUs],
-                                                      defaultLocalization: Constants.english)
+                                                      defaultLocalization: LocalizationConstants.english)
 
         // then
 
@@ -153,8 +143,8 @@ class LocalizationTests: XCTestCase {
         let settings = InMemorySettingsManager()
 
         let spanishUsComponents = [
-            NSLocale.Key.languageCode.rawValue: Constants.spanish,
-            NSLocale.Key.countryCode.rawValue: Constants.usRegion
+            NSLocale.Key.languageCode.rawValue: LocalizationConstants.spanish,
+            NSLocale.Key.countryCode.rawValue: LocalizationConstants.usRegion
         ]
 
         let spanishUs = Locale.identifier(fromComponents: spanishUsComponents)
@@ -162,14 +152,14 @@ class LocalizationTests: XCTestCase {
         // when
 
         let localizationManager = LocalizationManager(settings: settings,
-                                                      key: Constants.settingsKey,
-                                                      preferredLanguages: [Constants.russian, spanishUs, Constants.english],
-                                                      availableLocalizations: [Constants.spanish],
-                                                      defaultLocalization: Constants.english)
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian, spanishUs, LocalizationConstants.english],
+                                                      availableLocalizations: [LocalizationConstants.spanish],
+                                                      defaultLocalization: LocalizationConstants.english)
 
         // then
 
-        XCTAssertEqual(localizationManager.selectedLocalization, Constants.spanish)
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.spanish)
     }
 
     func testPreferredLocalizationIsPartiallyMatchesAvailable() {
@@ -178,8 +168,8 @@ class LocalizationTests: XCTestCase {
         let settings = InMemorySettingsManager()
 
         let spanishUsComponents = [
-            NSLocale.Key.languageCode.rawValue: Constants.spanish,
-            NSLocale.Key.countryCode.rawValue: Constants.usRegion
+            NSLocale.Key.languageCode.rawValue: LocalizationConstants.spanish,
+            NSLocale.Key.countryCode.rawValue: LocalizationConstants.usRegion
         ]
 
         let spanishUs = Locale.identifier(fromComponents: spanishUsComponents)
@@ -187,10 +177,10 @@ class LocalizationTests: XCTestCase {
         // when
 
         let localizationManager = LocalizationManager(settings: settings,
-                                                      key: Constants.settingsKey,
-                                                      preferredLanguages: [Constants.russian, Constants.spanish, Constants.english],
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian, LocalizationConstants.spanish, LocalizationConstants.english],
                                                       availableLocalizations: [spanishUs],
-                                                      defaultLocalization: Constants.english)
+                                                      defaultLocalization: LocalizationConstants.english)
 
         // then
 
