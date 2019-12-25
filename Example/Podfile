@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SoraFoundation_Example' do
+  pod 'SoraFoundation', :path => '../'
+
+  target 'SoraFoundation_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
