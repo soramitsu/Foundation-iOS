@@ -186,4 +186,22 @@ class LocalizationTests: XCTestCase {
 
         XCTAssertEqual(localizationManager.selectedLocalization, spanishUs)
     }
+
+    func testFirstMatchingPreferredLanguageMustBeSelected() {
+        // given
+
+        let settings = InMemorySettingsManager()
+
+        // when
+
+        let localizationManager = LocalizationManager(settings: settings,
+                                                      key: LocalizationConstants.settingsKey,
+                                                      preferredLanguages: [LocalizationConstants.russian, LocalizationConstants.english],
+                                                      availableLocalizations: [LocalizationConstants.english, LocalizationConstants.russian],
+                                                      defaultLocalization: LocalizationConstants.spanish)
+
+        // then
+
+        XCTAssertEqual(localizationManager.selectedLocalization, LocalizationConstants.russian)
+    }
 }

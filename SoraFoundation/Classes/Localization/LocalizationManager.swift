@@ -125,25 +125,21 @@ public final class LocalizationManager: LocalizationManagerProtocol {
     private static func determineSuitableLocalization(for preferredLanguages: [String],
                                                       availableLocalizations: [String]) -> String? {
 
-        let fullmatchLocalization = availableLocalizations.first {
-            return preferredLanguages.contains($0)
-        }
-
-        if fullmatchLocalization != nil {
-            return fullmatchLocalization
-        }
-
-        for availableLocalization in availableLocalizations {
-            let availableComponents = Locale.components(fromIdentifier: availableLocalization)
-
-            guard let availableLanguage = availableComponents[NSLocale.Key.languageCode.rawValue] else {
-                return nil
+        for preferredLanguage in preferredLanguages {
+            if availableLocalizations.contains(preferredLanguage) {
+                return preferredLanguage
             }
 
-            for preferredLanguage in preferredLanguages {
-                let preferredComponent = Locale.components(fromIdentifier: preferredLanguage)
+            let preferredComponent = Locale.components(fromIdentifier: preferredLanguage)
 
-                if availableLanguage == preferredComponent[NSLocale.Key.languageCode.rawValue] {
+            guard let language = preferredComponent[NSLocale.Key.languageCode.rawValue] else {
+                continue
+            }
+
+            for availableLocalization in availableLocalizations {
+                let availableComponents = Locale.components(fromIdentifier: availableLocalization)
+
+                if language == availableComponents[NSLocale.Key.languageCode.rawValue] {
                     return availableLocalization
                 }
             }
