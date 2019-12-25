@@ -5,7 +5,5 @@ target 'SoraFoundation_Example' do
 
   target 'SoraFoundation_Tests' do
     inherit! :search_paths
-
-    
   end
 end
