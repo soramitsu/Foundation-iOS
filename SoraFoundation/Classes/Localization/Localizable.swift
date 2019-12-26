@@ -5,20 +5,17 @@
 
 import Foundation
 
-public protocol LocalizablePresentation: class {
+public protocol Localizable: class {
     var localizationManager: LocalizationManagerProtocol? { get set }
 
     func applyLocalization()
-
-    func didChangeLocalizationManager(from oldManager: LocalizationManagerProtocol?,
-                                      to newManager: LocalizationManagerProtocol?)
 }
 
 private struct LocalizableConstants {
     static var localizationManagerKey = "co.jp.sora.localizable.manager"
 }
 
-public extension LocalizablePresentation {
+public extension Localizable {
     var localizationManager: LocalizationManagerProtocol? {
         set {
 
@@ -39,7 +36,7 @@ public extension LocalizablePresentation {
                                      newValue,
                                      .OBJC_ASSOCIATION_RETAIN)
 
-            didChangeLocalizationManager(from: currentManager, to: newValue)
+            applyLocalization()
         }
 
         get {
@@ -47,7 +44,4 @@ public extension LocalizablePresentation {
                 as? LocalizationManagerProtocol
         }
     }
-
-    func didChangeLocalizationManager(from oldManager: LocalizationManagerProtocol?,
-                                      to newManager: LocalizationManagerProtocol?) {}
 }

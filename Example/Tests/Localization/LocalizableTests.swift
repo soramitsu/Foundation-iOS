@@ -6,17 +6,12 @@
 import XCTest
 import SoraFoundation
 
-class LocalizablePresentationTests: XCTestCase {
-    private class LocalizablePresenter: LocalizablePresentation {
+class LocalizableTests: XCTestCase {
+    private class LocalizablePresenter: Localizable {
         private(set) var applyLocalizationCount = 0
-        private(set) var didChangeLocalizationCount = 0
 
         func applyLocalization() {
             applyLocalizationCount += 1
-        }
-
-        func didChangeLocalizationManager(from oldManager: LocalizationManagerProtocol?, to newManager: LocalizationManagerProtocol?) {
-            didChangeLocalizationCount += 1
         }
     }
 
@@ -33,7 +28,6 @@ class LocalizablePresentationTests: XCTestCase {
 
         // then
 
-        XCTAssertEqual(presenter.applyLocalizationCount, 1)
-        XCTAssertEqual(presenter.didChangeLocalizationCount, 1)
+        XCTAssertEqual(presenter.applyLocalizationCount, 2)
     }
 }
