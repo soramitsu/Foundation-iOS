@@ -94,6 +94,38 @@ class LocalizationTests: XCTestCase {
                        settings.string(for: LocalizationConstants.settingsKey))
     }
 
+    func testAvailableLocalizationAppliedWhenInitWithSelectedLocalization() {
+        // given
+
+        let localizations = [LocalizationConstants.spanish]
+
+        // when
+
+        let localizationManager = LocalizationManager(localization: LocalizationConstants.spanish,
+                                                      availableLocalizations: localizations)!
+
+        // then
+
+        XCTAssertEqual(localizations, localizationManager.availableLocalizations)
+    }
+
+    func testAvailableLocalizationAppliedWhenInitWithSettings() {
+        // given
+
+        let settings = InMemorySettingsManager()
+        let localizations = [LocalizationConstants.spanish]
+
+        // when
+
+        let localizationManager = LocalizationManager(settings: settings,
+                                                      key: LocalizationConstants.spanish,
+                                                      availableLocalizations: localizations)
+
+        // then
+
+        XCTAssertEqual(localizations, localizationManager.availableLocalizations)
+    }
+
     func testDefaultLanguageIsUsedIfLocaleMatchingFailed() {
         // given
 

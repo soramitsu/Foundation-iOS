@@ -58,9 +58,7 @@ public final class LocalizationManager: LocalizationManagerProtocol {
         }
     }
 
-    public var availableLocalizations: [String] {
-        return Bundle.main.localizations
-    }
+    public var availableLocalizations: [String]
 
     public init(settings: SettingsManagerProtocol,
                 key: String,
@@ -69,6 +67,7 @@ public final class LocalizationManager: LocalizationManagerProtocol {
                 defaultLocalization: String = "en") {
         self.settings = settings
         self.settingsKey = key
+        self.availableLocalizations = availableLocalizations
 
         if let localization = settings.string(for: key) {
             self.selectedLocalization = localization
@@ -82,7 +81,7 @@ public final class LocalizationManager: LocalizationManagerProtocol {
         }
     }
 
-    public init?(localization: String) {
+    public init?(localization: String, availableLocalizations: [String] = Bundle.main.localizations) {
         let components = Locale.components(fromIdentifier: localization)
 
         guard components[NSLocale.Key.languageCode.rawValue] != nil else {
@@ -90,6 +89,7 @@ public final class LocalizationManager: LocalizationManagerProtocol {
         }
 
         self.selectedLocalization = localization
+        self.availableLocalizations = availableLocalizations
     }
 
     public func addObserver(with owner: AnyObject,
