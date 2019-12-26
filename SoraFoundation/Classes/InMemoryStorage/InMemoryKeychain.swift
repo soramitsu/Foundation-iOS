@@ -9,6 +9,8 @@ import SoraKeystore
 public final class InMemoryKeychain: KeystoreProtocol {
     private var keystore: [String: Data] = [:]
 
+    public init() {}
+
     public func addKey(_ key: Data, with identifier: String) throws {
         keystore[identifier] = key
     }
