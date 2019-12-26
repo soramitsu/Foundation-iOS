@@ -1,6 +1,9 @@
 PODS:
   - SoraFoundation (0.1.0):
+    - SoraFoundation/InMemoryStorage (= 0.1.0)
     - SoraFoundation/Localization (= 0.1.0)
+  - SoraFoundation/InMemoryStorage (0.1.0):
+    - SoraKeystore
   - SoraFoundation/Localization (0.1.0):
     - SoraKeystore
   - SoraKeystore (0.1.4)
@@ -17,9 +20,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SoraFoundation: 1aa0ebf97379cce211ad9daa9629333c840a78cb
+  SoraFoundation: 5228dfd2faddc60c9aab6a047f5044dde36ccec5
   SoraKeystore: 4abb9c667e5294fcb86961d9c2e9aa38889c653c
 
-PODFILE CHECKSUM: 51ed217d5ef84c6418e977a0b897e249b1d94a5e
+PODFILE CHECKSUM: 198294870be41184505d04fe761c7588ce600757
 
 COCOAPODS: 1.8.4

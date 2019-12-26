@@ -22,6 +22,11 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.0'
 
+  s.subspec 'InMemoryStorage' do |is|
+      is.dependency 'SoraKeystore'
+      is.source_files = 'SoraFoundation/Classes/InMemoryStorage/**/*'
+  end
+
   s.subspec 'Localization' do |lc|
       lc.dependency 'SoraKeystore'
       lc.source_files = 'SoraFoundation/Classes/Localization/**/*'
