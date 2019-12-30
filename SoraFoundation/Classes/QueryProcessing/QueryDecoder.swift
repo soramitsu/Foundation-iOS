@@ -17,8 +17,8 @@ public final class QueryDecoder {
     public static let paramSeparator = "&"
     public static let keyValueSeparator = "="
 
-    lazy private var jsonEncoder: JSONEncoder = JSONEncoder()
-    lazy private var jsonDecoder: JSONDecoder = JSONDecoder()
+    lazy private var jsonEncoder = JSONEncoder()
+    lazy private var jsonDecoder = JSONDecoder()
 
     public func decode<T>(_ modelClass: T.Type, query: String) throws -> T where T: Decodable {
         let container = try query.components(separatedBy: QueryDecoder.paramSeparator)
