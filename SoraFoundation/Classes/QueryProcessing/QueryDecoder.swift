@@ -20,6 +20,8 @@ public final class QueryDecoder {
     lazy private var jsonEncoder = JSONEncoder()
     lazy private var jsonDecoder = JSONDecoder()
 
+    public init() {}
+
     public func decode<T>(_ modelClass: T.Type, query: String) throws -> T where T: Decodable {
         let container = try query.components(separatedBy: QueryDecoder.paramSeparator)
             .reduce(into: [String: String]()) { (container, param) in
