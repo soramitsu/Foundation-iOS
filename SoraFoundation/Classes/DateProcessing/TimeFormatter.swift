@@ -10,6 +10,9 @@ public protocol TimeFormatterProtocol {
 }
 
 public struct MinuteSecondFormatter: TimeFormatterProtocol {
+
+    public init() {}
+
     public func string(from timeInterval: TimeInterval) throws -> String {
         let minutes = Int(timeInterval) / 60
         let seconds = Int(timeInterval) % 60
@@ -22,6 +25,9 @@ public struct MinuteSecondFormatter: TimeFormatterProtocol {
 }
 
 public struct HourMinuteFormatter: TimeFormatterProtocol {
+
+    public init() {}
+
     public func string(from timeInterval: TimeInterval) throws -> String {
         var currentInterval = Int(timeInterval)
 
@@ -39,6 +45,9 @@ public struct HourMinuteFormatter: TimeFormatterProtocol {
 }
 
 public struct TotalTimeFormatter: TimeFormatterProtocol {
+
+    public init() {}
+
     public func string(from timeInterval: TimeInterval) throws -> String {
         var timeComponents: [Int] = []
 
