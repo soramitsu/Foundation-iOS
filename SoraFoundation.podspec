@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SoraFoundation'
-  s.version          = '0.1.0'
+  s.version          = '0.3.0'
   s.summary          = 'Implementation of commonly used algorithms to avoid boilerplate code.'
 
   s.description      = 'Library contains implementation of commonly used algorithms to reduce duplicated and boilerplate code.'
@@ -22,18 +22,34 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.0'
 
-  s.subspec 'InMemoryStorage' do |is|
-      is.dependency 'SoraKeystore'
-      is.source_files = 'SoraFoundation/Classes/InMemoryStorage/**/*'
-  end
+  s.frameworks = 'UIKit'
 
   s.subspec 'Localization' do |lc|
-      lc.dependency 'SoraKeystore'
+      lc.dependency 'SoraKeystore', '~> 0.1.5'
       lc.source_files = 'SoraFoundation/Classes/Localization/**/*'
+  end
+
+  s.subspec 'Timer' do |tm|
+      tm.dependency 'SoraFoundation/NotificationHandlers'
+      tm.source_files = 'SoraFoundation/Classes/Timer/**/*'
+  end
+
+  s.subspec 'NotificationHandlers' do |nh|
+      nh.source_files = 'SoraFoundation/Classes/NotificationHandlers/**/*'
+  end
+
+  s.subspec 'QueryProcessing' do |qp|
+      qp.source_files = 'SoraFoundation/Classes/QueryProcessing/**/*'
+  end
+
+  s.subspec 'DateProcessing' do |dp|
+      dp.dependency 'SoraFoundation/Localization'
+      dp.source_files = 'SoraFoundation/Classes/DateProcessing/**/*'
   end
 
   s.test_spec do |ts|
       ts.source_files = 'Example/Tests/**/*.swift'
+      ts.dependency 'Cuckoo'
   end
 
 end
