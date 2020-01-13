@@ -22,10 +22,7 @@ public protocol LocalizationManagerProtocol: class {
 
 public extension LocalizationManagerProtocol {
     var selectedLocale: Locale {
-        var components = Locale.components(fromIdentifier: Locale.current.identifier)
-        components[NSLocale.Key.languageCode.rawValue] = selectedLocalization
-
-        return Locale(identifier: Locale.identifier(fromComponents: components))
+        return Locale(identifier: selectedLocalization)
     }
 
     func addObserver(with owner: AnyObject, closure: @escaping LocalizationChangeClosure) {

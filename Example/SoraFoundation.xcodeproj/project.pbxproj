@@ -20,6 +20,7 @@
 		84868E0B23B3F72600E3CAA4 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868E0A23B3F72600E3CAA4 /* LocalizationTests.swift */; };
 		84868E0D23B4071500E3CAA4 /* LocalizableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868E0C23B4071500E3CAA4 /* LocalizableTests.swift */; };
 		84868E1023B4082900E3CAA4 /* LocalizationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868E0E23B407F800E3CAA4 /* LocalizationConstants.swift */; };
+		84B2A94B23CC87CF00533916 /* LocalizableResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A94A23CC87CF00533916 /* LocalizableResourceTests.swift */; };
 		ABFE890D5CA5BF5CCCCD3B86 /* Pods_SoraFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B56C74A4C257ACCE13BDB /* Pods_SoraFoundation_Tests.framework */; };
 		D4AD1638AF4D8B7DEB21FB9B /* Pods_SoraFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B98AB892105E5E39CB4DF4 /* Pods_SoraFoundation_Example.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		84868E0A23B3F72600E3CAA4 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		84868E0C23B4071500E3CAA4 /* LocalizableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTests.swift; sourceTree = "<group>"; };
 		84868E0E23B407F800E3CAA4 /* LocalizationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationConstants.swift; sourceTree = "<group>"; };
+		84B2A94A23CC87CF00533916 /* LocalizableResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableResourceTests.swift; sourceTree = "<group>"; };
 		907E1722871C99E309DA486B /* Pods-SoraFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoraFoundation_Tests.release.xcconfig"; path = "Target Support Files/Pods-SoraFoundation_Tests/Pods-SoraFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9FC688939BD08EA04602730C /* Pods-SoraFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoraFoundation_Example.debug.xcconfig"; path = "Target Support Files/Pods-SoraFoundation_Example/Pods-SoraFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A585613AADE84F1720D75666 /* SoraFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SoraFoundation.podspec; path = ../SoraFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -207,6 +209,7 @@
 				84868E0E23B407F800E3CAA4 /* LocalizationConstants.swift */,
 				84868E0A23B3F72600E3CAA4 /* LocalizationTests.swift */,
 				84868E0C23B4071500E3CAA4 /* LocalizableTests.swift */,
+				84B2A94A23CC87CF00533916 /* LocalizableResourceTests.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				846AD27D23B7D4A00084F1C0 /* EndpointBuilderTests.swift in Sources */,
 				846AD27E23B7D4A00084F1C0 /* CountdownTimerTests.swift in Sources */,
 				846AD28223B7D6C70084F1C0 /* CommonMocks.swift in Sources */,
+				84B2A94B23CC87CF00533916 /* LocalizableResourceTests.swift in Sources */,
 				846AD28423B7D93D0084F1C0 /* TimerConstants.swift in Sources */,
 				846AD27C23B7D4A00084F1C0 /* CompoundDateFormatterTests.swift in Sources */,
 				84868E0B23B3F72600E3CAA4 /* LocalizationTests.swift in Sources */,
