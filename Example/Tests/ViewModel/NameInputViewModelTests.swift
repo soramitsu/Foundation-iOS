@@ -51,10 +51,10 @@ class NameInputViewModelTests: XCTestCase {
      */
 
     func check(for initialValue: String, changes: [String], resultValue: String, expectCompletion: Bool) {
-        let normalizer = TrimmingCharacterPreprocessor(charset: CharacterSet.whitespaces)
-        let preprocessor = CompoundViewModelPreprocessor(children: [
-            PrefixCharacterPreprocessor(charset: Constants.personNameSeparators),
-            DuplicatingCharacterPreprocessor(charset: Constants.personNameSeparators)
+        let normalizer = TrimmingCharacterProcessor(charset: CharacterSet.whitespaces)
+        let preprocessor = CompoundTextProcessor(processors: [
+            PrefixCharacterProcessor(charset: Constants.personNameSeparators),
+            DuplicatingCharacterProcessor(charset: Constants.personNameSeparators)
         ])
 
         let viewModel = InputViewModel(value: initialValue,

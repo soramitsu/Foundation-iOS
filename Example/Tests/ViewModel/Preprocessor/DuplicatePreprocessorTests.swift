@@ -3,14 +3,14 @@ import SoraFoundation
 
 class DuplicateCharacterPreprocessorTests: XCTestCase {
     func testDuplicationsErasure() {
-        let preprocessor = DuplicatingCharacterPreprocessor(charset: CharacterSet(charactersIn: "-+"))
+        let preprocessor = DuplicatingCharacterProcessor(charset: CharacterSet(charactersIn: "-+"))
 
-        XCTAssertEqual(preprocessor.preprocess(text: "swift---alive"), "swift-alive")
-        XCTAssertEqual(preprocessor.preprocess(text: "swift+++alive"), "swift+alive")
-        XCTAssertEqual(preprocessor.preprocess(text: "swift'''alive"), "swift'''alive")
-        XCTAssertEqual(preprocessor.preprocess(text: "---swift"), "-swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "swift---"), "swift-")
-        XCTAssertEqual(preprocessor.preprocess(text: "+++"), "+")
-        XCTAssertEqual(preprocessor.preprocess(text: ""), "")
+        XCTAssertEqual(preprocessor.process(text: "swift---alive"), "swift-alive")
+        XCTAssertEqual(preprocessor.process(text: "swift+++alive"), "swift+alive")
+        XCTAssertEqual(preprocessor.process(text: "swift'''alive"), "swift'''alive")
+        XCTAssertEqual(preprocessor.process(text: "---swift"), "-swift")
+        XCTAssertEqual(preprocessor.process(text: "swift---"), "swift-")
+        XCTAssertEqual(preprocessor.process(text: "+++"), "+")
+        XCTAssertEqual(preprocessor.process(text: ""), "")
     }
 }

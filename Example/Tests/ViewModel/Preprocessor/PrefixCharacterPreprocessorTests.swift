@@ -4,14 +4,14 @@ import SoraFoundation
 class PrefixCharacterPreprocessorTests: XCTestCase {
 
     func testPrefixErasure() {
-        let preprocessor = PrefixCharacterPreprocessor(charset: CharacterSet(charactersIn: "-+"))
+        let preprocessor = PrefixCharacterProcessor(charset: CharacterSet(charactersIn: "-+"))
 
-        XCTAssertEqual(preprocessor.preprocess(text: "---swift"), "swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "++swift"), "swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "''swift"), "''swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "swift---"), "swift---")
-        XCTAssertEqual(preprocessor.preprocess(text: "+++"), "")
-        XCTAssertEqual(preprocessor.preprocess(text: ""), "")
+        XCTAssertEqual(preprocessor.process(text: "---swift"), "swift")
+        XCTAssertEqual(preprocessor.process(text: "++swift"), "swift")
+        XCTAssertEqual(preprocessor.process(text: "''swift"), "''swift")
+        XCTAssertEqual(preprocessor.process(text: "swift---"), "swift---")
+        XCTAssertEqual(preprocessor.process(text: "+++"), "")
+        XCTAssertEqual(preprocessor.process(text: ""), "")
     }
 
 }

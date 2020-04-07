@@ -3,13 +3,13 @@ import SoraFoundation
 
 class TrimmingCharacterPreprocessorTests: XCTestCase {
     func testPrefixErasure() {
-        let preprocessor = TrimmingCharacterPreprocessor(charset: CharacterSet(charactersIn: "-+"))
+        let preprocessor = TrimmingCharacterProcessor(charset: CharacterSet(charactersIn: "-+"))
 
-        XCTAssertEqual(preprocessor.preprocess(text: "---swift"), "swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "++swift++"), "swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "''swift"), "''swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "swift---"), "swift")
-        XCTAssertEqual(preprocessor.preprocess(text: "+++"), "")
-        XCTAssertEqual(preprocessor.preprocess(text: ""), "")
+        XCTAssertEqual(preprocessor.process(text: "---swift"), "swift")
+        XCTAssertEqual(preprocessor.process(text: "++swift++"), "swift")
+        XCTAssertEqual(preprocessor.process(text: "''swift"), "''swift")
+        XCTAssertEqual(preprocessor.process(text: "swift---"), "swift")
+        XCTAssertEqual(preprocessor.process(text: "+++"), "")
+        XCTAssertEqual(preprocessor.process(text: ""), "")
     }
 }

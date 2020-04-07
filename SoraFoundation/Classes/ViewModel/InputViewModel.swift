@@ -52,6 +52,9 @@ public protocol InputViewModelProtocol {
      *     - string: String to replace provided range with;
      *     - range: Range to replace in current value;
      *
+     *  - returns:
+     *  ```True``` if changes were successfully applied and ```false``` otherwise.
+     *
      *  - Example: A client must update the text of input field in case
      *  the call returs ```false``` and also return ```false``` from the delegate method.
      *
@@ -167,18 +170,18 @@ public final class InputViewModel: InputViewModelProtocol {
      *  - note:
      *  Current value is preprocessed by ```normalizer``` before validation.
      */
-    public let preprocessor: InputViewModelPreprocessing?
+    public let preprocessor: TextProcessing?
 
     /**
     *  Preprocesses final input value before checking its validity.
     */
-    public let normalizer: InputViewModelPreprocessing?
+    public let normalizer: TextProcessing?
 
     /// Applies ```normalizer``` (if available) to the current value and returns the result.
 
     public var normalizedValue: String {
         if let normalizer = normalizer {
-            return normalizer.preprocess(text: value)
+            return normalizer.process(text: value)
         } else {
             return value
         }
@@ -216,8 +219,8 @@ public final class InputViewModel: InputViewModelProtocol {
                 maxLength: Int = Int.max,
                 validCharacterSet: CharacterSet? = nil,
                 predicate: NSPredicate? = nil,
-                preprocessor: InputViewModelPreprocessing? = nil,
-                normalizer: InputViewModelPreprocessing? = nil,
+                preprocessor: TextProcessing? = nil,
+                normalizer: TextProcessing? = nil,
                 autocapitalizationType: UITextAutocapitalizationType = .sentences) {
         self.title = title
         self.value = value
@@ -281,7 +284,7 @@ public final class InputViewModel: InputViewModelProtocol {
         }
 
         if let preprocessor = preprocessor {
-            let preprocessed = preprocessor.preprocess(text: newValue)
+            let preprocessed = preprocessor.process(text: newValue)
 
             value = preprocessed
 
