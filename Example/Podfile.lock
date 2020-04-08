@@ -2,22 +2,22 @@ PODS:
   - Cuckoo (1.3.0):
     - Cuckoo/Swift (= 1.3.0)
   - Cuckoo/Swift (1.3.0)
-  - SoraFoundation (0.5.0):
-    - SoraFoundation/DateProcessing (= 0.5.0)
-    - SoraFoundation/Localization (= 0.5.0)
-    - SoraFoundation/NotificationHandlers (= 0.5.0)
-    - SoraFoundation/QueryProcessing (= 0.5.0)
-    - SoraFoundation/Timer (= 0.5.0)
-    - SoraFoundation/ViewModel (= 0.5.0)
-  - SoraFoundation/DateProcessing (0.5.0):
+  - SoraFoundation (0.7.0):
+    - SoraFoundation/DateProcessing (= 0.7.0)
+    - SoraFoundation/Localization (= 0.7.0)
+    - SoraFoundation/NotificationHandlers (= 0.7.0)
+    - SoraFoundation/QueryProcessing (= 0.7.0)
+    - SoraFoundation/Timer (= 0.7.0)
+    - SoraFoundation/ViewModel (= 0.7.0)
+  - SoraFoundation/DateProcessing (0.7.0):
     - SoraFoundation/Localization
-  - SoraFoundation/Localization (0.5.0):
+  - SoraFoundation/Localization (0.7.0):
     - SoraKeystore (~> 0.1.5)
-  - SoraFoundation/NotificationHandlers (0.5.0)
-  - SoraFoundation/QueryProcessing (0.5.0)
-  - SoraFoundation/Timer (0.5.0):
+  - SoraFoundation/NotificationHandlers (0.7.0)
+  - SoraFoundation/QueryProcessing (0.7.0)
+  - SoraFoundation/Timer (0.7.0):
     - SoraFoundation/NotificationHandlers
-  - SoraFoundation/ViewModel (0.5.0)
+  - SoraFoundation/ViewModel (0.7.0)
   - SoraKeystore (0.1.5)
 
 DEPENDENCIES:
@@ -35,9 +35,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Cuckoo: 4045c5a8ce378c919c20c5ff3d6dd11ded0ec699
-  SoraFoundation: c72ee1f08c4f7ed26b51b47338419f080adea4e7
+  SoraFoundation: adeb5d9756236db69c76712e0e57df9bcc324c59
   SoraKeystore: 408a26aafda780fc3005b20ab336791832b5419e
 
 PODFILE CHECKSUM: 0d0d46e5e4f46095c4daf79eb6426cce84b2ebdc
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.9.1
