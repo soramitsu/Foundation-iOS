@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SoraFoundation'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = 'Implementation of commonly used algorithms to avoid boilerplate code.'
 
   s.description      = 'Library contains implementation of commonly used algorithms to reduce duplicated and boilerplate code.'
@@ -45,6 +45,10 @@ Pod::Spec.new do |s|
   s.subspec 'DateProcessing' do |dp|
       dp.dependency 'SoraFoundation/Localization'
       dp.source_files = 'SoraFoundation/Classes/DateProcessing/**/*'
+  end
+
+  s.subspec 'ViewModel' do |vm|
+      vm.source_files = 'SoraFoundation/Classes/ViewModel/**/*'
   end
 
   s.test_spec do |ts|
