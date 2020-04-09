@@ -1,7 +1,12 @@
+/**
+* Copyright Soramitsu Co., Ltd. All Rights Reserved.
+* SPDX-License-Identifier: GPL-3.0
+*/
+
 import XCTest
 import SoraFoundation
 
-class NameInputViewModelTests: XCTestCase {
+class NameInputHandlingTests: XCTestCase {
 
     private struct Constants {
         static let personNameLimit = 30
@@ -57,12 +62,12 @@ class NameInputViewModelTests: XCTestCase {
             DuplicatingCharacterProcessor(charset: Constants.personNameSeparators)
         ])
 
-        let viewModel = InputViewModel(value: initialValue,
-                                       maxLength: Constants.personNameLimit,
-                                       validCharacterSet: Constants.personNameCharset,
-                                       predicate: Constants.personNamePredicate,
-                                       preprocessor: preprocessor,
-                                       normalizer: normalizer)
+        let viewModel = InputHandler(value: initialValue,
+                                     maxLength: Constants.personNameLimit,
+                                     validCharacterSet: Constants.personNameCharset,
+                                     predicate: Constants.personNamePredicate,
+                                     preprocessor: preprocessor,
+                                     normalizer: normalizer)
 
         changes.forEach {
             let value = viewModel.value
