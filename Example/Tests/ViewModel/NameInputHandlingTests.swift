@@ -57,7 +57,7 @@ class NameInputHandlingTests: XCTestCase {
 
     func check(for initialValue: String, changes: [String], resultValue: String, expectCompletion: Bool) {
         let normalizer = TrimmingCharacterProcessor(charset: CharacterSet.whitespaces)
-        let preprocessor = CompoundTextProcessor(processors: [
+        let processor = CompoundTextProcessor(processors: [
             PrefixCharacterProcessor(charset: Constants.personNameSeparators),
             DuplicatingCharacterProcessor(charset: Constants.personNameSeparators)
         ])
@@ -66,7 +66,7 @@ class NameInputHandlingTests: XCTestCase {
                                      maxLength: Constants.personNameLimit,
                                      validCharacterSet: Constants.personNameCharset,
                                      predicate: Constants.personNamePredicate,
-                                     preprocessor: preprocessor,
+                                     processor: processor,
                                      normalizer: normalizer)
 
         changes.forEach {
