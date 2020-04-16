@@ -29,7 +29,7 @@ public protocol InputHandling {
     var value: String { get }
 
     /**
-     *  Implementation of the protocol can include normalization logic that converts input value to
+     *  Implementation of the protocol can include normalization logic that converts input value
      *  to final one. This normalization also must be applied before determining whether input is completed.
      *  Example of normalization can be trimming.
      */
