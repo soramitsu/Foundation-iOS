@@ -29,6 +29,14 @@ public protocol InputHandling {
     var value: String { get }
 
     /**
+     *  Implementation of the protocol can include normalization logic that converts input value to
+     *  to final one. This normalization also must be applied before determining whether input is completed.
+     *  Example of normalization can be trimming.
+     */
+
+    var normalizedValue: String { get }
+
+    /**
      *  Flag that state whether current value can be changed via ```didReceiveReplacement``` method.
      *
      *  - note:
@@ -181,14 +189,12 @@ public final class InputHandler: InputHandling {
      *  - note:
      *  Current value is preprocessed by ```normalizer``` before validation.
      */
-    public let preprocessor: TextProcessing?
+    public let processor: TextProcessing?
 
     /**
     *  Preprocesses final input value before checking its validity.
     */
     public let normalizer: TextProcessing?
-
-    /// Applies ```normalizer``` (if available) to the current value and returns the result.
 
     public var normalizedValue: String {
         if let normalizer = normalizer {
@@ -226,7 +232,7 @@ public final class InputHandler: InputHandling {
                 maxLength: Int = Int.max,
                 validCharacterSet: CharacterSet? = nil,
                 predicate: NSPredicate? = nil,
-                preprocessor: TextProcessing? = nil,
+                processor: TextProcessing? = nil,
                 normalizer: TextProcessing? = nil) {
         self.value = value
         self.required = required
@@ -250,7 +256,7 @@ public final class InputHandler: InputHandling {
 
         self.invalidCharacterSet = validCharacterSet?.inverted
         self.predicate = predicate
-        self.preprocessor = preprocessor
+        self.processor = processor
         self.normalizer = normalizer
     }
 
@@ -286,12 +292,12 @@ public final class InputHandler: InputHandling {
             return false
         }
 
-        if let preprocessor = preprocessor {
-            let preprocessed = preprocessor.process(text: newValue)
+        if let processor = processor {
+            let processed = processor.process(text: newValue)
 
-            value = preprocessed
+            value = processed
 
-            return preprocessed == newValue
+            return processed == newValue
         } else {
             value = newValue
 
