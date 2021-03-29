@@ -29,6 +29,7 @@
 		84868E0D23B4071500E3CAA4 /* LocalizableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868E0C23B4071500E3CAA4 /* LocalizableTests.swift */; };
 		84868E1023B4082900E3CAA4 /* LocalizationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84868E0E23B407F800E3CAA4 /* LocalizationConstants.swift */; };
 		84B2A94B23CC87CF00533916 /* LocalizableResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A94A23CC87CF00533916 /* LocalizableResourceTests.swift */; };
+		84FFE4FD26122B000054EA63 /* BigNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFE4FC26122B000054EA63 /* BigNumberFormatterTests.swift */; };
 		ABFE890D5CA5BF5CCCCD3B86 /* Pods_SoraFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B56C74A4C257ACCE13BDB /* Pods_SoraFoundation_Tests.framework */; };
 		D4AD1638AF4D8B7DEB21FB9B /* Pods_SoraFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B98AB892105E5E39CB4DF4 /* Pods_SoraFoundation_Example.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		84868E0C23B4071500E3CAA4 /* LocalizableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTests.swift; sourceTree = "<group>"; };
 		84868E0E23B407F800E3CAA4 /* LocalizationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationConstants.swift; sourceTree = "<group>"; };
 		84B2A94A23CC87CF00533916 /* LocalizableResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableResourceTests.swift; sourceTree = "<group>"; };
+		84FFE4FC26122B000054EA63 /* BigNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNumberFormatterTests.swift; sourceTree = "<group>"; };
 		907E1722871C99E309DA486B /* Pods-SoraFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoraFoundation_Tests.release.xcconfig"; path = "Target Support Files/Pods-SoraFoundation_Tests/Pods-SoraFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9FC688939BD08EA04602730C /* Pods-SoraFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoraFoundation_Example.debug.xcconfig"; path = "Target Support Files/Pods-SoraFoundation_Example/Pods-SoraFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A585613AADE84F1720D75666 /* SoraFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SoraFoundation.podspec; path = ../SoraFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -147,6 +149,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				84FFE4FB26122AE90054EA63 /* NumberProcessing */,
 				846941B6243C934500433DA7 /* ViewModel */,
 				846AD28023B7D68D0084F1C0 /* Mocks */,
 				846AD27623B7D49F0084F1C0 /* DateProcessing */,
@@ -254,6 +257,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		84FFE4FB26122AE90054EA63 /* NumberProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				84FFE4FC26122B000054EA63 /* BigNumberFormatterTests.swift */,
+			);
+			path = NumberProcessing;
+			sourceTree = "<group>";
+		};
 		DCC62511E5A77B7CE56ACB22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,10 +329,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YLWWUD25VZ;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YLWWUD25VZ;
 						LastSwiftMigration = 1120;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -495,6 +508,7 @@
 				846AD28223B7D6C70084F1C0 /* CommonMocks.swift in Sources */,
 				84B2A94B23CC87CF00533916 /* LocalizableResourceTests.swift in Sources */,
 				8466001C243DF31000F2EFAC /* InputHandlingRestrictionsTests.swift in Sources */,
+				84FFE4FD26122B000054EA63 /* BigNumberFormatterTests.swift in Sources */,
 				8466000E243DBC0200F2EFAC /* InputHandlingInitializationTests.swift in Sources */,
 				846AD28423B7D93D0084F1C0 /* TimerConstants.swift in Sources */,
 				846AD27C23B7D4A00084F1C0 /* CompoundDateFormatterTests.swift in Sources */,
@@ -643,6 +657,7 @@
 			baseConfigurationReference = 9FC688939BD08EA04602730C /* Pods-SoraFoundation_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				INFOPLIST_FILE = SoraFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -658,6 +673,7 @@
 			baseConfigurationReference = 4B525E052CDD97F14086216F /* Pods-SoraFoundation_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				INFOPLIST_FILE = SoraFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -673,6 +689,8 @@
 			baseConfigurationReference = 369C2EE6A89ECCDDA3BD9FED /* Pods-SoraFoundation_Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -698,6 +716,8 @@
 			baseConfigurationReference = 907E1722871C99E309DA486B /* Pods-SoraFoundation_Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
