@@ -12,6 +12,9 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		841CBA10264411D000C85FBF /* DynamicPrecisionNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CBA0F264411D000C85FBF /* DynamicPrecisionNumberFormatterTests.swift */; };
+		841CBA212644250D00C85FBF /* CompoundNumberProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CBA202644250D00C85FBF /* CompoundNumberProcessingTests.swift */; };
+		841CBA2C26443F2200C85FBF /* TokenFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CBA2B26443F2200C85FBF /* TokenFormatterTests.swift */; };
 		8466000E243DBC0200F2EFAC /* InputHandlingInitializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466000D243DBC0200F2EFAC /* InputHandlingInitializationTests.swift */; };
 		84660016243DC6DB00F2EFAC /* InputViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84660015243DC6DB00F2EFAC /* InputViewModelTests.swift */; };
 		8466001A243DEE8F00F2EFAC /* InputHandlingObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84660019243DEE8F00F2EFAC /* InputHandlingObserverTests.swift */; };
@@ -57,6 +60,9 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SoraFoundation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoraFoundation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		841CBA0F264411D000C85FBF /* DynamicPrecisionNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPrecisionNumberFormatterTests.swift; sourceTree = "<group>"; };
+		841CBA202644250D00C85FBF /* CompoundNumberProcessingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundNumberProcessingTests.swift; sourceTree = "<group>"; };
+		841CBA2B26443F2200C85FBF /* TokenFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFormatterTests.swift; sourceTree = "<group>"; };
 		8466000D243DBC0200F2EFAC /* InputHandlingInitializationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandlingInitializationTests.swift; sourceTree = "<group>"; };
 		84660015243DC6DB00F2EFAC /* InputViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModelTests.swift; sourceTree = "<group>"; };
 		84660019243DEE8F00F2EFAC /* InputHandlingObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandlingObserverTests.swift; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				84FFE4FC26122B000054EA63 /* BigNumberFormatterTests.swift */,
+				841CBA0F264411D000C85FBF /* DynamicPrecisionNumberFormatterTests.swift */,
+				841CBA202644250D00C85FBF /* CompoundNumberProcessingTests.swift */,
+				841CBA2B26443F2200C85FBF /* TokenFormatterTests.swift */,
 			);
 			path = NumberProcessing;
 			sourceTree = "<group>";
@@ -497,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84868E1023B4082900E3CAA4 /* LocalizationConstants.swift in Sources */,
+				841CBA2C26443F2200C85FBF /* TokenFormatterTests.swift in Sources */,
 				846941BD243C988800433DA7 /* TrimmingCharacterPreprocessorTests.swift in Sources */,
 				846941BB243C97CB00433DA7 /* PrefixCharacterPreprocessorTests.swift in Sources */,
 				84660016243DC6DB00F2EFAC /* InputViewModelTests.swift in Sources */,
@@ -505,8 +515,10 @@
 				8466001A243DEE8F00F2EFAC /* InputHandlingObserverTests.swift in Sources */,
 				846AD27D23B7D4A00084F1C0 /* EndpointBuilderTests.swift in Sources */,
 				846AD27E23B7D4A00084F1C0 /* CountdownTimerTests.swift in Sources */,
+				841CBA10264411D000C85FBF /* DynamicPrecisionNumberFormatterTests.swift in Sources */,
 				846AD28223B7D6C70084F1C0 /* CommonMocks.swift in Sources */,
 				84B2A94B23CC87CF00533916 /* LocalizableResourceTests.swift in Sources */,
+				841CBA212644250D00C85FBF /* CompoundNumberProcessingTests.swift in Sources */,
 				8466001C243DF31000F2EFAC /* InputHandlingRestrictionsTests.swift in Sources */,
 				84FFE4FD26122B000054EA63 /* BigNumberFormatterTests.swift in Sources */,
 				8466000E243DBC0200F2EFAC /* InputHandlingInitializationTests.swift in Sources */,
