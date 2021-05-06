@@ -6,7 +6,7 @@
 
 import Foundation
 
-public class DynamicPrecisionFormatter: LocalizableDecimalFormatting {
+open class DynamicPrecisionFormatter: LocalizableDecimalFormatting {
     // max mantissa length in digits of Decimal
     static let maxPrecision: UInt8 = 38
 
@@ -27,7 +27,7 @@ public class DynamicPrecisionFormatter: LocalizableDecimalFormatting {
         )
     }
 
-    public var locale: Locale! {
+    open var locale: Locale! {
         get {
             numberFormatter.locale
         }
@@ -37,11 +37,11 @@ public class DynamicPrecisionFormatter: LocalizableDecimalFormatting {
         }
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func stringFromDecimal(_ value: Decimal) -> String? {
+    open func stringFromDecimal(_ value: Decimal) -> String? {
         let maybePrecision = (preferredPrecision..<Self.maxPrecision).first { prec in
             let precValue = (value as NSDecimalNumber).multiplying(byPowerOf10: Int16(prec)) as Decimal
             return precValue >= 1.0

@@ -3,7 +3,7 @@
 * SPDX-License-Identifier: GPL-3.0
 */
 
-public class BigNumberFormatter: LocalizableDecimalFormatting {
+open class BigNumberFormatter: LocalizableDecimalFormatting {
     private let formatter: LocalizableDecimalFormatting
     private let abbreviations: [BigNumberAbbreviation]
 
@@ -27,13 +27,13 @@ public class BigNumberFormatter: LocalizableDecimalFormatting {
         self.formatter = formatter
     }
 
-    public var locale: Locale! = Locale.current
+    open var locale: Locale! = Locale.current
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func stringFromDecimal(_ value: Decimal) -> String? {
+    open func stringFromDecimal(_ value: Decimal) -> String? {
         guard value >= 0, !abbreviations.isEmpty else {
             return nil
         }
