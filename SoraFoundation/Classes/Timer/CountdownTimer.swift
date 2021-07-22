@@ -75,7 +75,7 @@ public final class CountdownTimer: NSObject {
     }
 
     private func scheduleTimer() {
-        timer = Timer.scheduledTimer(timeInterval: notificationInterval,
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(actionTimer(_:)),
                                      userInfo: nil,
