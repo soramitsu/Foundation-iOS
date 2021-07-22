@@ -17,8 +17,14 @@ public protocol CountdownTimerProtocol: class {
     var notificationInterval: TimeInterval { get }
     var remainedInterval: TimeInterval { get }
 
-    func start(with interval: TimeInterval)
+    func start(with interval: TimeInterval, runLoop: RunLoop, mode: RunLoop.Mode)
     func stop()
+}
+
+public extension CountdownTimerProtocol {
+    func start(with interval: TimeInterval) {
+        start(with: interval, runLoop: .main, mode: .default)
+    }
 }
 
 public protocol CountdownTimerDelegate: class {
@@ -39,10 +45,21 @@ public final class CountdownTimer: NSObject {
     public private(set) var lastNotifiedInterval: TimeInterval = 0.0
     public let notificationInterval: TimeInterval
 
+    @available(*, deprecated, message: "Use init without delegate")
     public init(delegate: CountdownTimerDelegate,
          applicationHander: ApplicationHandlerProtocol = ApplicationHandler(),
          notificationInterval: TimeInterval = 1.0) {
         self.delegate = delegate
+        self.applicationHandler = applicationHander
+        self.notificationInterval = notificationInterval
+
+        super.init()
+    }
+
+    public init(
+        applicationHander: ApplicationHandlerProtocol = ApplicationHandler(),
+        notificationInterval: TimeInterval = 1.0
+    ) {
         self.applicationHandler = applicationHander
         self.notificationInterval = notificationInterval
 
@@ -73,7 +90,7 @@ public final class CountdownTimer: NSObject {
 }
 
 extension CountdownTimer: CountdownTimerProtocol {
-    public func start(with interval: TimeInterval) {
+    public func start(with interval: TimeInterval, runLoop: RunLoop, mode: RunLoop.Mode) {
         stop()
 
         remainedInterval = interval
@@ -87,6 +104,9 @@ extension CountdownTimer: CountdownTimerProtocol {
             applicationHandler.delegate = self
 
             scheduleTimer()
+            if let timer = timer {
+                runLoop.add(timer, forMode: mode)
+            }
         } else {
             state = .stopped
 
