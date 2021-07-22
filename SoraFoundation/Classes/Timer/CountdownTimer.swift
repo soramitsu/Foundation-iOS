@@ -39,10 +39,21 @@ public final class CountdownTimer: NSObject {
     public private(set) var lastNotifiedInterval: TimeInterval = 0.0
     public let notificationInterval: TimeInterval
 
+    @available(*, deprecated, message: "Use init without delegate")
     public init(delegate: CountdownTimerDelegate,
          applicationHander: ApplicationHandlerProtocol = ApplicationHandler(),
          notificationInterval: TimeInterval = 1.0) {
         self.delegate = delegate
+        self.applicationHandler = applicationHander
+        self.notificationInterval = notificationInterval
+
+        super.init()
+    }
+
+    public init(
+        applicationHander: ApplicationHandlerProtocol = ApplicationHandler(),
+        notificationInterval: TimeInterval = 1.0
+    ) {
         self.applicationHandler = applicationHander
         self.notificationInterval = notificationInterval
 
@@ -64,11 +75,12 @@ public final class CountdownTimer: NSObject {
     }
 
     private func scheduleTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
+        timer = Timer.scheduledTimer(timeInterval: notificationInterval,
                                      target: self,
                                      selector: #selector(actionTimer(_:)),
                                      userInfo: nil,
                                      repeats: true)
+        RunLoop.main.add(timer!, forMode: .common)
     }
 }
 

@@ -37,8 +37,8 @@ class CountdownTimerTests: XCTestCase {
             when(stub).delegate.set(any(ApplicationHandlerDelegate?.self)).thenDoNothing()
         }
 
-        let countdownTimer = CountdownTimer(delegate: mockDelegate,
-                                            applicationHander: mockApplicationHandler)
+        let countdownTimer = CountdownTimer(applicationHander: mockApplicationHandler)
+        countdownTimer.delegate = mockDelegate
 
         // when
         guard case .stopped = countdownTimer.state else {
@@ -97,8 +97,8 @@ class CountdownTimerTests: XCTestCase {
             when(stub).delegate.set(any(ApplicationHandlerDelegate?.self)).thenDoNothing()
         }
 
-        let countdownTimer = CountdownTimer(delegate: mockDelegate,
-                                            applicationHander: mockApplicationHandler)
+        let countdownTimer = CountdownTimer(applicationHander: mockApplicationHandler)
+        countdownTimer.delegate = mockDelegate
 
         // when
 
@@ -183,9 +183,11 @@ class CountdownTimerTests: XCTestCase {
 
         let notificationInterval: TimeInterval = 2.0
 
-        let countdownTimer = CountdownTimer(delegate: mockDelegate,
-                                            applicationHander: mockApplicationHandler,
-                                            notificationInterval: notificationInterval)
+        let countdownTimer = CountdownTimer(
+            applicationHander: mockApplicationHandler,
+            notificationInterval: notificationInterval
+        )
+        countdownTimer.delegate = mockDelegate
 
         // when
 
