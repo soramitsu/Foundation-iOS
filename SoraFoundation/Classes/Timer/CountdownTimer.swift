@@ -17,8 +17,14 @@ public protocol CountdownTimerProtocol: class {
     var notificationInterval: TimeInterval { get }
     var remainedInterval: TimeInterval { get }
 
-    func start(with interval: TimeInterval)
+    func start(with interval: TimeInterval, runLoop: RunLoop, mode: RunLoop.Mode)
     func stop()
+}
+
+public extension CountdownTimerProtocol {
+    func start(with interval: TimeInterval) {
+        start(with: interval, runLoop: .main, mode: .default)
+    }
 }
 
 public protocol CountdownTimerDelegate: class {
@@ -80,12 +86,11 @@ public final class CountdownTimer: NSObject {
                                      selector: #selector(actionTimer(_:)),
                                      userInfo: nil,
                                      repeats: true)
-        RunLoop.main.add(timer!, forMode: .common)
     }
 }
 
 extension CountdownTimer: CountdownTimerProtocol {
-    public func start(with interval: TimeInterval) {
+    public func start(with interval: TimeInterval, runLoop: RunLoop, mode: RunLoop.Mode) {
         stop()
 
         remainedInterval = interval
@@ -99,6 +104,9 @@ extension CountdownTimer: CountdownTimerProtocol {
             applicationHandler.delegate = self
 
             scheduleTimer()
+            if let timer = timer {
+                runLoop.add(timer, forMode: mode)
+            }
         } else {
             state = .stopped
 
