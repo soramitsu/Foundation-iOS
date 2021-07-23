@@ -39,6 +39,8 @@ public final class CountdownTimer: NSObject {
 
     private var applicationHandler: ApplicationHandlerProtocol
     private var timer: Timer?
+    private var runLoop: RunLoop?
+    private var runLoopMode: RunLoop.Mode?
 
     public private(set) var state: CountdownTimerState = .stopped
     public private(set) var remainedInterval: TimeInterval = 0.0
@@ -86,6 +88,9 @@ public final class CountdownTimer: NSObject {
                                      selector: #selector(actionTimer(_:)),
                                      userInfo: nil,
                                      repeats: true)
+        if let runLoop = runLoop, let mode = runLoopMode, let timer = timer {
+            runLoop.add(timer, forMode: mode)
+        }
     }
 }
 
@@ -103,10 +108,9 @@ extension CountdownTimer: CountdownTimerProtocol {
         if remainedInterval > 0 {
             applicationHandler.delegate = self
 
+            self.runLoop = runLoop
+            self.runLoopMode = mode
             scheduleTimer()
-            if let timer = timer {
-                runLoop.add(timer, forMode: mode)
-            }
         } else {
             state = .stopped
 
@@ -121,6 +125,8 @@ extension CountdownTimer: CountdownTimerProtocol {
 
         timer?.invalidate()
         timer = nil
+        runLoop = nil
+        runLoopMode = nil
 
         let currentRemainedInterval = remainedInterval
         remainedInterval = 0.0
