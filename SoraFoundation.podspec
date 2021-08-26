@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SoraFoundation'
-  s.version          = '0.10.2'
+  s.version          = '1.0.0'
   s.summary          = 'Implementation of commonly used algorithms to avoid boilerplate code.'
 
   s.description      = 'Library contains implementation of commonly used algorithms to reduce duplicated and boilerplate code.'
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit'
 
   s.subspec 'Localization' do |lc|
-      lc.dependency 'SoraKeystore', '~> 0.1.5'
+      lc.dependency 'SoraKeystore', '~> 1.0.0'
       lc.source_files = 'SoraFoundation/Classes/Localization/**/*'
   end
 
